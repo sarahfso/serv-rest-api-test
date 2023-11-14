@@ -1,10 +1,4 @@
-const faker = require('faker-br');
-
-const user = {
-  postName: faker.name.firstName(),
-  email: faker.internet.email(),
-  putName: faker.name.firstName()
-}
+import { user } from "../fixtures/user"
 
 describe('CRUD - USER', () => {
 
@@ -22,7 +16,7 @@ describe('CRUD - USER', () => {
       url: `/usuarios/${Cypress.env('userId')}`
     }).then((res) => {
       expect(res.status).to.eql(200)
-      expect(res.body.nome).to.equal(user.postName)
+      expect(res.body.nome).to.equal(user.nome)
       expect(res.body.email).to.equal(user.email)
       expect(res.body._id).to.eql(Cypress.env('userId', res.body._id))
     })
@@ -33,10 +27,10 @@ describe('CRUD - USER', () => {
       method: 'PUT',
       url: `/usuarios/${Cypress.env('userId')}`,
       body: {
-        "nome": user.putName,
+        "nome": user.putNome,
         "email": user.email,
-        "password": "teste",
-        "administrador": "true"
+        "password": user.password,
+        "administrador": user.administrador
       }
     }).then((res) => {
       expect(res.status).to.eql(200)
@@ -49,7 +43,7 @@ describe('CRUD - USER', () => {
       url: `/usuarios/${Cypress.env('userId')}`
     }).then((res) => {
       expect(res.status).to.eql(200)
-      expect(res.body.nome).to.equal(user.putName)
+      expect(res.body.nome).to.equal(user.putNome)
       expect(res.body.email).to.equal(user.email)
       expect(res.body._id).to.eql(Cypress.env('userId', res.body._id))
     })
