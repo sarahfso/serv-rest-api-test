@@ -1,5 +1,5 @@
 node_modules/
 .env
-cypress/results
-cypress/videos
+cypress/results/
+cypress/videos/
 public/

@@ -7,6 +7,7 @@ module.exports = defineConfig({
   },
   e2e: {
     baseUrl: 'https://serverest.dev',
+    specPattern: "cypress/api/*.cy.js",
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
