@@ -5,9 +5,9 @@
     "passes": 5,
     "pending": 2,
     "failures": -1,
-    "start": "2023-11-17T06:11:50.178Z",
-    "end": "2023-11-17T06:11:57.074Z",
-    "duration": 6896,
+    "start": "2023-11-17T06:35:07.690Z",
+    "end": "2023-11-17T06:35:14.603Z",
+    "duration": 6913,
     "testsRegistered": 7,
     "passPercent": 100,
     "pendingPercent": 28.57142857142857,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "8849c941-e56b-4d69-9eaf-4f036c50ff2e",
+      "uuid": "51aaed69-c745-44f5-af2f-6d86bcbd24bd",
       "title": "",
       "fullFile": "cypress\\e2e\\product.cy.js",
       "file": "cypress\\e2e\\product.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+          "uuid": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
           "title": "CRUD - PRODUTO",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "deve cadastrar produto com sucesso",
               "fullTitle": "CRUD - PRODUTO deve cadastrar produto com sucesso",
               "timedOut": null,
-              "duration": 2310,
+              "duration": 2276,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.postProduct(product).then(res => {\n  expect(res.status).to.eql(201);\n  expect(res.body.message).to.eql('Cadastro realizado com sucesso');\n  Cypress.env('productId', res.body._id);\n});",
               "err": {},
-              "uuid": "d7dafe2c-9eec-46c7-8319-0fc99dc728f1",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "c782c3b7-4006-4c63-af69-208e34e9b72e",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "deve buscar produto por ID com sucesso",
               "fullTitle": "CRUD - PRODUTO deve buscar produto por ID com sucesso",
               "timedOut": null,
-              "duration": 683,
+              "duration": 765,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "let id = Cypress.env('productId');\ncy.getProductById(id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.nome).to.equal(product.nome);\n  let resBodyPreco = parseFloat(res.body.preco).toFixed(2);\n  expect(resBodyPreco).to.equal(product.preco);\n  expect(res.body.descricao).to.equal(product.descricao);\n  expect(res.body.quantidade).to.equal(product.quantidade);\n  expect(res.body._id).to.eql(Cypress.env('productId', res.body._id));\n});",
               "err": {},
-              "uuid": "0efe051e-024c-4c34-bd8e-b2da1f3fa55b",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "62d16618-a78e-4718-8d1d-066ba94abbbf",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "deve editar produto por ID com sucesso",
               "fullTitle": "CRUD - PRODUTO deve editar produto por ID com sucesso",
               "timedOut": null,
-              "duration": 1298,
+              "duration": 1303,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,8 +83,8 @@
               "context": null,
               "code": "let id = Cypress.env('productId');\ncy.putProduct(product, id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.message).to.equal('Registro alterado com sucesso');\n});\ncy.log('buscando produto pelo ID');\ncy.getProductById(id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.nome).to.equal(product.putNome);\n  let resBodyPreco = parseFloat(res.body.preco).toFixed(2);\n  expect(resBodyPreco).to.equal(product.putPreco);\n  expect(res.body.descricao).to.equal(product.putDescricao);\n  expect(res.body.quantidade).to.equal(product.putQuantidade);\n  expect(res.body._id).to.eql(Cypress.env('productId', res.body._id));\n});",
               "err": {},
-              "uuid": "6f304c6e-0b82-4cd0-9e6f-765a8ed0e75b",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "9930cb44-6b26-4dc4-92ff-e83b9b1c5c71",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             },
@@ -92,7 +92,7 @@
               "title": "deve excluir produto por ID com sucesso",
               "fullTitle": "CRUD - PRODUTO deve excluir produto por ID com sucesso",
               "timedOut": null,
-              "duration": 1256,
+              "duration": 1266,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -101,29 +101,29 @@
               "context": null,
               "code": "let id = Cypress.env('productId');\ncy.deleteProduct(id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.message).to.equal('Registro excluído com sucesso');\n});\ncy.log('validando que o produto foi excluido, consultando pelo ID');\ncy.getProductById(id).then(res => {\n  expect(res.status).to.eql(400);\n  expect(res.body.message).to.equal('Produto não encontrado');\n});",
               "err": {},
-              "uuid": "09b34ec6-d4f1-45ea-a1d3-316026996d65",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "555924cc-d80d-44bb-a00f-eb12215cf412",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d7dafe2c-9eec-46c7-8319-0fc99dc728f1",
-            "0efe051e-024c-4c34-bd8e-b2da1f3fa55b",
-            "6f304c6e-0b82-4cd0-9e6f-765a8ed0e75b",
-            "09b34ec6-d4f1-45ea-a1d3-316026996d65"
+            "c782c3b7-4006-4c63-af69-208e34e9b72e",
+            "62d16618-a78e-4718-8d1d-066ba94abbbf",
+            "9930cb44-6b26-4dc4-92ff-e83b9b1c5c71",
+            "555924cc-d80d-44bb-a00f-eb12215cf412"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5547,
+          "duration": 5610,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+          "uuid": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
           "title": "Testes funcionais - PRODUTO",
           "fullFile": "",
           "file": "",
@@ -134,7 +134,7 @@
               "title": "Não deve cadastrar produto com nome já utilizado",
               "fullTitle": "Testes funcionais - PRODUTO Não deve cadastrar produto com nome já utilizado",
               "timedOut": null,
-              "duration": 1280,
+              "duration": 1241,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -143,8 +143,8 @@
               "context": null,
               "code": "cy.postProduct(product).then(res => {\n  expect(res.status).to.eql(201);\n  expect(res.body.message).to.eql('Cadastro realizado com sucesso');\n  Cypress.env('productId', res.body._id);\n});\ncy.log('tentativa de cadastro de produto com nome duplicado');\ncy.postProduct(product).then(res => {\n  expect(res.status).to.eql(400);\n  expect(res.body.message).to.eql('Já existe produto com esse nome');\n});",
               "err": {},
-              "uuid": "7c88ef84-cf04-48a4-aa81-803fa3ceb5e9",
-              "parentUUID": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+              "uuid": "5f570811-8c6b-4656-bf01-f82b9929671b",
+              "parentUUID": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
               "isHook": false,
               "skipped": false
             },
@@ -161,8 +161,8 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "261dfa3e-29fb-423c-9f27-4cc6ecb87054",
-              "parentUUID": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+              "uuid": "ba2a4657-4d3f-49a9-aef6-7b7ca14c774e",
+              "parentUUID": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
               "isHook": false,
               "skipped": false
             },
@@ -179,23 +179,23 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "516fc2a2-5b96-4678-823d-e0fa30f9194c",
-              "parentUUID": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+              "uuid": "ff54d0ec-f645-430f-8b44-faf63c8b7615",
+              "parentUUID": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7c88ef84-cf04-48a4-aa81-803fa3ceb5e9"
+            "5f570811-8c6b-4656-bf01-f82b9929671b"
           ],
           "failures": [],
           "pending": [
-            "261dfa3e-29fb-423c-9f27-4cc6ecb87054",
-            "516fc2a2-5b96-4678-823d-e0fa30f9194c"
+            "ba2a4657-4d3f-49a9-aef6-7b7ca14c774e",
+            "ff54d0ec-f645-430f-8b44-faf63c8b7615"
           ],
           "skipped": [],
-          "duration": 1280,
+          "duration": 1241,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000

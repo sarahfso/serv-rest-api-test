@@ -12,13 +12,13 @@
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false,
-    "start": "2023-11-17T06:11:50.178Z",
-    "end": "2023-11-17T06:12:14.388Z",
-    "duration": 24210
+    "start": "2023-11-17T06:35:07.690Z",
+    "end": "2023-11-17T06:35:31.605Z",
+    "duration": 23915
   },
   "results": [
     {
-      "uuid": "4f6af8b8-a323-49ee-af8a-6186603f3e38",
+      "uuid": "3571e1e6-4831-4338-8bd2-1350c51c75c7",
       "title": "",
       "fullFile": "cypress\\e2e\\user.cy.js",
       "file": "cypress\\e2e\\user.cy.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "cfbf926a-5370-4484-8247-5d51e8b425a1",
+          "uuid": "49747c18-eaf2-4a33-b286-401e874c86a2",
           "title": "CRUD - USER",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "Deve cadastrar user com sucesso",
               "fullTitle": "CRUD - USER Deve cadastrar user com sucesso",
               "timedOut": null,
-              "duration": 780,
+              "duration": 737,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -47,8 +47,8 @@
               "context": null,
               "code": "cy.postUser(_user.user).then(res => {\n  expect(res.status).to.eql(201);\n  expect(res.body.message).to.eql('Cadastro realizado com sucesso');\n  Cypress.env('userId', res.body._id);\n});",
               "err": {},
-              "uuid": "4f77eb01-26dc-455b-adac-94a61fd568dc",
-              "parentUUID": "cfbf926a-5370-4484-8247-5d51e8b425a1",
+              "uuid": "b5ee5d08-02e1-4746-9dd8-0b6dc175372c",
+              "parentUUID": "49747c18-eaf2-4a33-b286-401e874c86a2",
               "isHook": false,
               "skipped": false
             },
@@ -56,7 +56,7 @@
               "title": "Deve listar user pelo Id",
               "fullTitle": "CRUD - USER Deve listar user pelo Id",
               "timedOut": null,
-              "duration": 686,
+              "duration": 642,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -65,8 +65,8 @@
               "context": null,
               "code": "cy.api({\n  method: 'GET',\n  url: `/usuarios/${Cypress.env('userId')}`\n}).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.nome).to.equal(_user.user.nome);\n  expect(res.body.email).to.equal(_user.user.email);\n  expect(res.body._id).to.eql(Cypress.env('userId', res.body._id));\n});",
               "err": {},
-              "uuid": "0c3799c2-dff9-4c0e-93db-1864283ffc5c",
-              "parentUUID": "cfbf926a-5370-4484-8247-5d51e8b425a1",
+              "uuid": "c8d9dbb1-ceb0-4ea4-8706-c8b89c491661",
+              "parentUUID": "49747c18-eaf2-4a33-b286-401e874c86a2",
               "isHook": false,
               "skipped": false
             },
@@ -74,7 +74,7 @@
               "title": "Deve editar user",
               "fullTitle": "CRUD - USER Deve editar user",
               "timedOut": null,
-              "duration": 1375,
+              "duration": 1271,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -83,8 +83,8 @@
               "context": null,
               "code": "cy.api({\n  method: 'PUT',\n  url: `/usuarios/${Cypress.env('userId')}`,\n  body: {\n    \"nome\": _user.user.putNome,\n    \"email\": _user.user.email,\n    \"password\": _user.user.password,\n    \"administrador\": _user.user.administrador\n  }\n}).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.message).to.equal('Registro alterado com sucesso');\n});\ncy.log('consultando user pelo Id');\ncy.api({\n  method: 'GET',\n  url: `/usuarios/${Cypress.env('userId')}`\n}).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.nome).to.equal(_user.user.putNome);\n  expect(res.body.email).to.equal(_user.user.email);\n  expect(res.body._id).to.eql(Cypress.env('userId', res.body._id));\n});",
               "err": {},
-              "uuid": "d47fcb18-68f8-450c-9c1d-d6d77bd450d3",
-              "parentUUID": "cfbf926a-5370-4484-8247-5d51e8b425a1",
+              "uuid": "a5ce6bc5-e978-4873-9455-a607f2934766",
+              "parentUUID": "49747c18-eaf2-4a33-b286-401e874c86a2",
               "isHook": false,
               "skipped": false
             },
@@ -92,7 +92,7 @@
               "title": "Deve excluir user",
               "fullTitle": "CRUD - USER Deve excluir user",
               "timedOut": null,
-              "duration": 1336,
+              "duration": 1231,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -101,29 +101,29 @@
               "context": null,
               "code": "cy.api({\n  method: 'DELETE',\n  url: `/usuarios/${Cypress.env('userId')}`\n}).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.message).to.equal('Registro excluído com sucesso');\n});\ncy.log('Validando que o user foi excluido, consultando pelo ID');\ncy.api({\n  failOnStatusCode: false,\n  method: 'GET',\n  url: `/usuarios/${Cypress.env('userId')}`\n}).then(res => {\n  expect(res.status).to.eql(400);\n  expect(res.body.message).to.equal('Usuário não encontrado');\n});",
               "err": {},
-              "uuid": "1b7af42c-570b-49e9-a147-f58563427aef",
-              "parentUUID": "cfbf926a-5370-4484-8247-5d51e8b425a1",
+              "uuid": "478d68ce-59c7-4360-8594-b4cfa7318c18",
+              "parentUUID": "49747c18-eaf2-4a33-b286-401e874c86a2",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "4f77eb01-26dc-455b-adac-94a61fd568dc",
-            "0c3799c2-dff9-4c0e-93db-1864283ffc5c",
-            "d47fcb18-68f8-450c-9c1d-d6d77bd450d3",
-            "1b7af42c-570b-49e9-a147-f58563427aef"
+            "b5ee5d08-02e1-4746-9dd8-0b6dc175372c",
+            "c8d9dbb1-ceb0-4ea4-8706-c8b89c491661",
+            "a5ce6bc5-e978-4873-9455-a607f2934766",
+            "478d68ce-59c7-4360-8594-b4cfa7318c18"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 4177,
+          "duration": 3881,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "288c2d01-defe-4e33-b83a-181670d9c176",
+          "uuid": "19be9337-7a07-4bb2-ab54-2756f1f0e8ad",
           "title": "Testes funcionais - USER",
           "fullFile": "",
           "file": "",
@@ -134,7 +134,7 @@
               "title": "Não deve cadastrar mais de um user com mesmo e-mail",
               "fullTitle": "Testes funcionais - USER Não deve cadastrar mais de um user com mesmo e-mail",
               "timedOut": null,
-              "duration": 1305,
+              "duration": 1326,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -143,20 +143,20 @@
               "context": null,
               "code": "cy.postUser(_user.user).then(res => {\n  expect(res.status).to.eql(201);\n  expect(res.body.message).to.eql('Cadastro realizado com sucesso');\n  Cypress.env('userId', res.body._id);\n});\ncy.log('tentativa de cadastro duplicado');\ncy.postUser(_user.user).then(res => {\n  expect(res.status).to.eql(400);\n  expect(res.body.message).to.eql('Este email já está sendo usado');\n});",
               "err": {},
-              "uuid": "7d489e66-ebac-460f-9e15-a19e3fbfc203",
-              "parentUUID": "288c2d01-defe-4e33-b83a-181670d9c176",
+              "uuid": "e651d26f-e58b-4ccd-a150-df9cf1bec53e",
+              "parentUUID": "19be9337-7a07-4bb2-ab54-2756f1f0e8ad",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7d489e66-ebac-460f-9e15-a19e3fbfc203"
+            "e651d26f-e58b-4ccd-a150-df9cf1bec53e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1305,
+          "duration": 1326,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -172,7 +172,7 @@
       "_timeout": 2000
     },
     {
-      "uuid": "8849c941-e56b-4d69-9eaf-4f036c50ff2e",
+      "uuid": "51aaed69-c745-44f5-af2f-6d86bcbd24bd",
       "title": "",
       "fullFile": "cypress\\e2e\\product.cy.js",
       "file": "cypress\\e2e\\product.cy.js",
@@ -181,7 +181,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+          "uuid": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
           "title": "CRUD - PRODUTO",
           "fullFile": "",
           "file": "",
@@ -192,7 +192,7 @@
               "title": "deve cadastrar produto com sucesso",
               "fullTitle": "CRUD - PRODUTO deve cadastrar produto com sucesso",
               "timedOut": null,
-              "duration": 2310,
+              "duration": 2276,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -201,8 +201,8 @@
               "context": null,
               "code": "cy.postProduct(product).then(res => {\n  expect(res.status).to.eql(201);\n  expect(res.body.message).to.eql('Cadastro realizado com sucesso');\n  Cypress.env('productId', res.body._id);\n});",
               "err": {},
-              "uuid": "d7dafe2c-9eec-46c7-8319-0fc99dc728f1",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "c782c3b7-4006-4c63-af69-208e34e9b72e",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             },
@@ -210,7 +210,7 @@
               "title": "deve buscar produto por ID com sucesso",
               "fullTitle": "CRUD - PRODUTO deve buscar produto por ID com sucesso",
               "timedOut": null,
-              "duration": 683,
+              "duration": 765,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -219,8 +219,8 @@
               "context": null,
               "code": "let id = Cypress.env('productId');\ncy.getProductById(id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.nome).to.equal(product.nome);\n  let resBodyPreco = parseFloat(res.body.preco).toFixed(2);\n  expect(resBodyPreco).to.equal(product.preco);\n  expect(res.body.descricao).to.equal(product.descricao);\n  expect(res.body.quantidade).to.equal(product.quantidade);\n  expect(res.body._id).to.eql(Cypress.env('productId', res.body._id));\n});",
               "err": {},
-              "uuid": "0efe051e-024c-4c34-bd8e-b2da1f3fa55b",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "62d16618-a78e-4718-8d1d-066ba94abbbf",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             },
@@ -228,7 +228,7 @@
               "title": "deve editar produto por ID com sucesso",
               "fullTitle": "CRUD - PRODUTO deve editar produto por ID com sucesso",
               "timedOut": null,
-              "duration": 1298,
+              "duration": 1303,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -237,8 +237,8 @@
               "context": null,
               "code": "let id = Cypress.env('productId');\ncy.putProduct(product, id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.message).to.equal('Registro alterado com sucesso');\n});\ncy.log('buscando produto pelo ID');\ncy.getProductById(id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.nome).to.equal(product.putNome);\n  let resBodyPreco = parseFloat(res.body.preco).toFixed(2);\n  expect(resBodyPreco).to.equal(product.putPreco);\n  expect(res.body.descricao).to.equal(product.putDescricao);\n  expect(res.body.quantidade).to.equal(product.putQuantidade);\n  expect(res.body._id).to.eql(Cypress.env('productId', res.body._id));\n});",
               "err": {},
-              "uuid": "6f304c6e-0b82-4cd0-9e6f-765a8ed0e75b",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "9930cb44-6b26-4dc4-92ff-e83b9b1c5c71",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             },
@@ -246,7 +246,7 @@
               "title": "deve excluir produto por ID com sucesso",
               "fullTitle": "CRUD - PRODUTO deve excluir produto por ID com sucesso",
               "timedOut": null,
-              "duration": 1256,
+              "duration": 1266,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -255,29 +255,29 @@
               "context": null,
               "code": "let id = Cypress.env('productId');\ncy.deleteProduct(id).then(res => {\n  expect(res.status).to.eql(200);\n  expect(res.body.message).to.equal('Registro excluído com sucesso');\n});\ncy.log('validando que o produto foi excluido, consultando pelo ID');\ncy.getProductById(id).then(res => {\n  expect(res.status).to.eql(400);\n  expect(res.body.message).to.equal('Produto não encontrado');\n});",
               "err": {},
-              "uuid": "09b34ec6-d4f1-45ea-a1d3-316026996d65",
-              "parentUUID": "622cda78-f4e5-4db2-b033-18651f3c0d8c",
+              "uuid": "555924cc-d80d-44bb-a00f-eb12215cf412",
+              "parentUUID": "f562e652-f5b7-4daa-9288-d84c8550c2b7",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d7dafe2c-9eec-46c7-8319-0fc99dc728f1",
-            "0efe051e-024c-4c34-bd8e-b2da1f3fa55b",
-            "6f304c6e-0b82-4cd0-9e6f-765a8ed0e75b",
-            "09b34ec6-d4f1-45ea-a1d3-316026996d65"
+            "c782c3b7-4006-4c63-af69-208e34e9b72e",
+            "62d16618-a78e-4718-8d1d-066ba94abbbf",
+            "9930cb44-6b26-4dc4-92ff-e83b9b1c5c71",
+            "555924cc-d80d-44bb-a00f-eb12215cf412"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5547,
+          "duration": 5610,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
         },
         {
-          "uuid": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+          "uuid": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
           "title": "Testes funcionais - PRODUTO",
           "fullFile": "",
           "file": "",
@@ -288,7 +288,7 @@
               "title": "Não deve cadastrar produto com nome já utilizado",
               "fullTitle": "Testes funcionais - PRODUTO Não deve cadastrar produto com nome já utilizado",
               "timedOut": null,
-              "duration": 1280,
+              "duration": 1241,
               "state": "passed",
               "speed": "fast",
               "pass": true,
@@ -297,8 +297,8 @@
               "context": null,
               "code": "cy.postProduct(product).then(res => {\n  expect(res.status).to.eql(201);\n  expect(res.body.message).to.eql('Cadastro realizado com sucesso');\n  Cypress.env('productId', res.body._id);\n});\ncy.log('tentativa de cadastro de produto com nome duplicado');\ncy.postProduct(product).then(res => {\n  expect(res.status).to.eql(400);\n  expect(res.body.message).to.eql('Já existe produto com esse nome');\n});",
               "err": {},
-              "uuid": "7c88ef84-cf04-48a4-aa81-803fa3ceb5e9",
-              "parentUUID": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+              "uuid": "5f570811-8c6b-4656-bf01-f82b9929671b",
+              "parentUUID": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
               "isHook": false,
               "skipped": false
             },
@@ -315,8 +315,8 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "261dfa3e-29fb-423c-9f27-4cc6ecb87054",
-              "parentUUID": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+              "uuid": "ba2a4657-4d3f-49a9-aef6-7b7ca14c774e",
+              "parentUUID": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
               "isHook": false,
               "skipped": false
             },
@@ -333,23 +333,23 @@
               "context": null,
               "code": "",
               "err": {},
-              "uuid": "516fc2a2-5b96-4678-823d-e0fa30f9194c",
-              "parentUUID": "3c509e85-cb4b-4917-8477-3c79f54587c2",
+              "uuid": "ff54d0ec-f645-430f-8b44-faf63c8b7615",
+              "parentUUID": "078d0a85-5068-4b6a-82ef-7afc22eb6521",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7c88ef84-cf04-48a4-aa81-803fa3ceb5e9"
+            "5f570811-8c6b-4656-bf01-f82b9929671b"
           ],
           "failures": [],
           "pending": [
-            "261dfa3e-29fb-423c-9f27-4cc6ecb87054",
-            "516fc2a2-5b96-4678-823d-e0fa30f9194c"
+            "ba2a4657-4d3f-49a9-aef6-7b7ca14c774e",
+            "ff54d0ec-f645-430f-8b44-faf63c8b7615"
           ],
           "skipped": [],
-          "duration": 1280,
+          "duration": 1241,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
