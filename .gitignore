@@ -1,4 +1,5 @@
-/node_modules
+node_modules
 .env
-/cypress/results
-/public
+cypress/results
+cypress/videos
+public

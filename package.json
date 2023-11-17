@@ -1,15 +1,15 @@
 {
-  "name": "serv_rest_api_test",
+  "name": "serv-rest-api-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "example api test with cypress",
   "main": "index.js",
   "scripts": {
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run",
-    "report:merge": "mochawesome-merge cypress/results/json/* > index.json",
+    "report:merge": "mochawesome-merge cypress/results/json/* >> index.json",
     "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
   },
-  "author": "",
+  "author": "github.com/sarahfso",
   "license": "ISC",
   "dependencies": {
     "cypress": "^12.11.0"
