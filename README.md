@@ -1,10 +1,11 @@
 # Cypress
  
-Projeto de exemplo para realização de testes de api utilizando Cypress. Você pode visualizar os reports gerados em integração contínua [aqui](https://sarahfso.github.io/serv-rest-api-test/).
+Projeto de exemplo para realização de testes de API utilizando Cypress. Testando o ServeRest API. Você pode visualizar os reports gerados em integração contínua [aqui](https://sarahfso.github.io/serv-rest-api-test/).
  
 ## Ferramentas utilizadas:
 - [VSCode](https://code.visualstudio.com/ "VSCode")
 - [Cypress](https://www.npmjs.com/package/cypress "Cypress")
+- [ServeRest](https://serverest.dev/ "ServeRest")
  
 ## Tutorial, Instalação e execução
  
